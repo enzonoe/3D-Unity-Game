@@ -28,10 +28,8 @@ public class RadarController : MonoBehaviour
         // Create icons for each objective
         for (int i = 0; i < objectiveObjects.Length; i++)
         {
-            Debug.Log("Length: " + objectiveObjects.Length + " Number: " + i);
-            objectiveIcons[i] = CreateObjectiveIcon(objectiveObjects[i]);
-            objectiveIcons[i].name = "ObjectiveIcon" + i; // Append index to the name
-            Debug.Log("Icons: " + objectiveIcons[i]);
+            objectiveIcons[i] = CreateObjectiveIcon(objectiveObjects[i], i);
+            Debug.Log("Icons: " + objectiveIcons[i] + " Objective: " + objectiveObjects[i]);
         }
     }
 
@@ -45,16 +43,19 @@ public class RadarController : MonoBehaviour
         {
             for (int i = 0; i < objectiveObjects.Length; i++)
             {
-                Debug.Log("number: " + i);
+                //Debug.Log("number: " + i);
                 UpdateIconPosition(objectiveIcons[i], GetObjectPosition(objectiveObjects[i]));
             }
         }
     }
 
-    RectTransform CreateObjectiveIcon(GameObject objectiveObject)
+    RectTransform CreateObjectiveIcon(GameObject objectiveObject, int index)
     {
         // Instantiate an icon for the objective
         RectTransform objectiveIcon = Instantiate(objectiveIconPrefab, transform);
+
+        // Give the objective icon a unique name based on the provided index
+        objectiveIcon.name = "ObjectiveIcon" + index;
 
         // Update objective icon position and rotation based on its position in the game world
         UpdateIconPosition(objectiveIcon, GetObjectPosition(objectiveObject));
