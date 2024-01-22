@@ -368,13 +368,13 @@ GameObject:
   - component: {fileID: 178564168}
   - component: {fileID: 178564167}
   - component: {fileID: 178564166}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &178564165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 409474496}
   - component: {fileID: 409474495}
   - component: {fileID: 409474497}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,10 +718,10 @@ RectTransform:
   - {fileID: 571474469}
   m_Father: {fileID: 178564165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -360, y: -160}
+  m_SizeDelta: {x: 762, y: 358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409474495
 MonoBehaviour:
@@ -776,6 +776,7 @@ MonoBehaviour:
   playerIcon: {fileID: 571474469}
   objectiveIconPrefab: {fileID: 1228528451474517985, guid: 0c48fa99d05f3df40982d3d9a949e166, type: 3}
   groundTransform: {fileID: 1765681347}
+  backgroundTransform: {fileID: 409474494}
   orientation: {fileID: 963194228}
   playerObject: {fileID: 252702620}
 --- !u!1 &501192255
@@ -900,7 +901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isImgOn: 0
-  radar: {fileID: 235712093}
+  radar: {fileID: 409474493}
+  tablet: {fileID: 235712093}
   radarLight: {fileID: 1252739990}
 --- !u!114 &501192261
 MonoBehaviour:
@@ -3693,7 +3695,7 @@ GameObject:
   - component: {fileID: 571474469}
   - component: {fileID: 571474471}
   - component: {fileID: 571474470}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: playerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3983,7 +3985,7 @@ GameObject:
   - component: {fileID: 1025698943}
   - component: {fileID: 1025698945}
   - component: {fileID: 1025698944}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4843,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826291191}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -4858,7 +4860,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826291191}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -5159,7 +5161,7 @@ Transform:
   m_GameObject: {fileID: 2059798800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 315.1026, y: 16.998253, z: -19.604588}
+  m_LocalPosition: {x: 199.2, y: 16.998253, z: -19.604588}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

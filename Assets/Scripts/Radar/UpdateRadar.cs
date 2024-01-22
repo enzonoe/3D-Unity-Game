@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RadarController : MonoBehaviour
+public class UpdateRadar : MonoBehaviour
 {
-    public RectTransform playerIcon;
+    public RectTransform playerIcon; // The player sprite
     public RectTransform objectiveIconPrefab; // Prefab for the objective icon
     public Transform groundTransform; // The ground object
+    public RectTransform backgroundTransform;
     public Transform orientation; // Rotation of the Player/Camera
     public GameObject playerObject; // Player object to track
 
@@ -13,6 +14,9 @@ public class RadarController : MonoBehaviour
     RectTransform[] objectiveIcons;
 
     Vector3 groundScale;
+
+    //Vector3 backgroundTransform;
+    float correctScaling;
 
     void Start()
     {
@@ -43,7 +47,7 @@ public class RadarController : MonoBehaviour
         {
             for (int i = 0; i < objectiveObjects.Length; i++)
             {
-                //Debug.Log("number: " + i);
+                // Debug.Log("number: " + i);
                 UpdateIconPosition(objectiveIcons[i], GetObjectPosition(objectiveObjects[i]));
             }
         }
@@ -66,14 +70,19 @@ public class RadarController : MonoBehaviour
     void UpdateIconPosition(RectTransform icon, Vector3 playerPosition)
     {
         // Convert world position to radar panel space
-        Vector2 radarPosition = new Vector2(playerPosition.x / groundScale.x, playerPosition.z / groundScale.z);
+        Vector2 radarPosition = new Vector2(
+            (playerPosition.x / groundScale.x) * backgroundTransform.rect.width,
+            (playerPosition.z / groundScale.z) * backgroundTransform.rect.height
+        );
 
-        // Scale the radar position based on the scale of the radar panel
-        radarPosition.x *= playerIcon.parent.GetComponent<RectTransform>().sizeDelta.x / 2;
-        radarPosition.y *= playerIcon.parent.GetComponent<RectTransform>().sizeDelta.y / 2;
+        // Calculate offset based on the anchor point
+        Vector2 anchorOffset = new Vector2(
+            backgroundTransform.rect.width * (backgroundTransform.pivot.x - 0.5f),
+            backgroundTransform.rect.height * (backgroundTransform.pivot.y - 0.5f)
+        );
 
         // Update icon position on the radar
-        icon.anchoredPosition = radarPosition;
+        icon.anchoredPosition = radarPosition - anchorOffset;
     }
 
     void UpdateIconRotation(RectTransform icon, Transform orientation)
@@ -82,7 +91,7 @@ public class RadarController : MonoBehaviour
         if (orientation != null)
         {
             // Update icon rotation to match the rotation of the trackedObject
-            icon.rotation = Quaternion.Euler(0f, 0f, -(orientation.eulerAngles.y + 180));
+            icon.rotation = Quaternion.Euler(0f, 0f, -orientation.eulerAngles.y);
         }
         else
         {

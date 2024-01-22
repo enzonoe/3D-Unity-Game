@@ -7,6 +7,7 @@ public class OpenRadar : MonoBehaviour
 {
     public bool isImgOn;
     public GameObject radar;
+    public GameObject tablet;
     public GameObject radarLight;
 
     void Start()
@@ -14,6 +15,7 @@ public class OpenRadar : MonoBehaviour
         if (radar != null && radarLight != null)
         {
             radar.SetActive(false);
+            tablet.SetActive(false);
             radarLight.SetActive(false);
             isImgOn = false;
         }
@@ -31,12 +33,14 @@ public class OpenRadar : MonoBehaviour
             if (isImgOn)
             {
                 radar.SetActive(false);
+                tablet.SetActive(false);
                 radarLight.SetActive(false);
                 isImgOn = false;
             }
             else
             {
                 radar.SetActive(true);
+                tablet.SetActive(true);
                 radarLight.SetActive(true);
                 isImgOn = true;
             }
